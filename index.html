@@ -18,10 +18,16 @@
     }
   </style>
   <script>
+    function Enter_Check(){
+      if(event.keyCode == 13)
+        st();
+    }
     function st() {
       document.getElementById("result").value="";
       var total = document.getElementById("total").value;
       var num = document.getElementById("num").value;
+      if(!(total&&num))
+        return;
       var arr = [total];
       var arr_result = [num];
       for(var i=0; i<num;i++) {
@@ -48,8 +54,8 @@
 <div class="content">
   <h1>추첨</h1>
   <div>
-  <p>총 인원 입력: <input type="text" id="total"></p>
-  <p>추첨 개수 입력: <input type="text" id="num"></p>
+  <p>총 인원 입력: <input type="text" id="total" onkeydown="Enter_Check();"></p>
+  <p>추첨 개수 입력: <input type="text" id="num" onkeydown="Enter_Check();"></p>
   <p><input type="button" value="→" onclick="st()"></p>
   <p><textarea id="result"></textarea></p>
 </div>
